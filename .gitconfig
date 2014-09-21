@@ -1,0 +1,11 @@
+[user]
+	email = gerard0sweeney@gmail.com
+	name = Gerard Sweeney
+[push]
+	default = simple
+[alias]
+	co = checkout
+    ca = commit -a
+    ci = commit
+[core]
+	editor = gvim -f
