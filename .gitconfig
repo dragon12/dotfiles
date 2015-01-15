@@ -5,7 +5,7 @@
 	default = simple
 [alias]
 	co = checkout
-    ca = commit -a -m
-    ci = commit -m
+    ca = commit -a
+    ci = commit
 [core]
 	editor = gvim -f
