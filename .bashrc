@@ -135,19 +135,19 @@ if [ `pwd` = "/home/gers" ]; then
 fi
 
 
-
-
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-
 #stop ctrl-s conflicts in ipython-vim
 stty stop undef
-
 
 # stuff for kdb/q
 export PATH="$PATH:/opt/q/l32"
 export QHOME=/opt/q
 alias q="rlwrap /opt/q/l32/q"
 
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+
+alias ssh_gerardsw='ssh -v -v gerardsw@gerardsweeney.com'
+export PG_HOME='/usr/lib/postgresql/9.3/bin/'
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PG_HOME:$PATH"
