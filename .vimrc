@@ -1,3 +1,5 @@
+set shell=/bin/bash
+
 set nocompatible               " be iMproved
 filetype off                   " required!
 
@@ -6,7 +8,7 @@ call vundle#rc()
 
 " let Vundle manage Vundle
 " required! 
-Bundle 'gmarik/vundle'
+Plugin 'gmarik/vundle'
 
 " My Bundles here:
 "
