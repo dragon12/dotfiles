@@ -1,11 +1,10 @@
-[user]
-	email = gerard0sweeney@gmail.com
-	name = Gerard Sweeney
-[push]
-	default = simple
 [alias]
 	co = checkout
-    ca = commit -a
-    ci = commit
+	ca = commit -a
 [core]
 	editor = gvim -f
+[user]
+	email = me@gerardsweeney.com
+	name = Ger Sweeney
+[pull]
+	rebase = true
