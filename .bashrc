@@ -12,6 +12,8 @@ esac
 # See bash(1) for more options
 HISTCONTROL=ignoreboth
 
+source ~/git-prompt.sh
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 
@@ -65,7 +67,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 VENV="$(virtualenv_info)";
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\] \$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 " (%s)") \$ '
 else
     #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     PS1='${debian_chroot:+($debian_chroot)}\w \$ '
@@ -97,6 +99,7 @@ fi
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+alias vi=vim
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -130,9 +133,9 @@ function hg {
 	grep $* ~/.bash_eternal_history
 }
 
-export PATH=$PATH:/media/sf_vbox_shared/developing_scripts/rails
+#export PATH=$PATH:/media/sf_vbox_shared/developing_scripts/rails
 
-if [ `pwd` = "/home/gers" ]; then
+if [ `pwd` = "/home/gers" ] || [ `pwd` = "/home/ger" ] || [ `pwd` = "/home/ger/Desktop" ]; then
 	cd /media/sf_vbox_shared/
 fi
 
@@ -141,15 +144,15 @@ fi
 stty stop undef
 
 # stuff for kdb/q
-export PATH="$PATH:/opt/q/l32"
-export QHOME=/opt/q
-alias q="rlwrap /opt/q/l32/q"
+#export PATH="$PATH:/opt/q/l32"
+#export QHOME=/opt/q
+#alias q="rlwrap /opt/q/l32/q"
 
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
-alias ssh_gerardsw='ssh -v -v gerardsw@gerardsweeney.com'
-export PG_HOME='/usr/lib/postgresql/9.3/bin/'
+#alias ssh_gerardsw='ssh -v -v gerardsw@gerardsweeney.com'
+#export PG_HOME='/usr/lib/postgresql/9.3/bin/'
 
 
 export HISTFILESIZE=
