@@ -46,4 +46,4 @@
 	email = me@gerardsweeney.com
 	name = Ger Sweeney
 [safe]
-	directory = /media/sf_vbox_shared/repos/dotfiles
+	directory = *

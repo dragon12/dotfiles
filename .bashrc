@@ -63,11 +63,17 @@ function virtualenv_info() {
    [[ -n "$venv" ]] && echo "(venv:$venv) "
 }
 
+function __venv_display() {
+    if [[ "$VIRTUAL_ENV_PROMPT" != "" ]]; then
+        echo " (venv:$VIRTUAL_ENV_PROMPT)"
+    fi
+}
+
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 VENV="$(virtualenv_info)";
 if [ "$color_prompt" = yes ]; then
     #PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 " (%s)") \$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\[\033[00m\]\[\033[01;34m\]\w\[\033[00m\] $(__git_ps1 " (%s)")$(__venv_display) \$ '
 else
     #PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
     PS1='${debian_chroot:+($debian_chroot)}\w \$ '
@@ -164,3 +170,7 @@ export HISTFILE=~/.bash_eternal_history
 # Force prompt to write history after every command.
 # http://superuser.com/questions/20900/bash-history-loss
 PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
