@@ -1,10 +1,49 @@
 [alias]
 	co = checkout
 	ca = commit -a
+    ci = commit
+    bgraph = log --all --graph --decorate --oneline --simplify-by-decoration
+    graphnotag = log --all --graph --oneline --simplify-by-decoration --decorate-refs-exclude='refs/tags/'
+    plog = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short
+    pl = log --pretty=format:'%C(yellow)%h %Cred%ad %Cblue%an%Cgreen%d %Creset%s' --date=short --decorate-refs-exclude='refs/tags/'
+    lognotag = log --decorate-refs-exclude='refs/tags/'
+    get-email = !git config --get user.email | grep -oe \"^[^@]*\"
+    cpre = !sh -c 'git push origin +`git symbolic-ref HEAD | cut -d/ -f3-`:precommit_$(git config --get user.email | sed s,@.*,,)_`git symbolic-ref HEAD | cut -d/ -f3-`'
+    cpre2 = !git up && git push origin +master:precommit_$(git get-email)_master
+    b = branch
+    ri = rebase -i
+    rc = rebase --continue
+    r = rebase
+    rim = rebase -i master
+    rem = rebase master
+    nd = diff --name-only
+    wd = diff --word-diff
+    cp = cherry-pick
+    info = remote show origin
+    db = push origin --delete
+    bd = push origin --delete
+    ab = push -f --set-upstream origin
+
+[fetch]
+    prune = true
+
+[color "decorate"]
+    tag = blue bold
+
+[pull]
+    rebase = true
+
+[diff]
+    renames = copies
+    tool = vimdiff
+
+[difftool]
+    prompt = false
+
 [core]
 	editor = gvim -f
 [user]
 	email = me@gerardsweeney.com
 	name = Ger Sweeney
-[pull]
-	rebase = true
+[safe]
+	directory = /media/sf_vbox_shared/repos/dotfiles
